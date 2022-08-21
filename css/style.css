@@ -1,0 +1,20 @@
+body {
+    background-color: #e5e5e5;
+}
+
+.nav-extended {
+    /* background-image: url("/img/movie-3057394.jpg"); >CONTROLADO PELO JAVASCRIPT */
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: soft-light;
+}
+
+nav ul li.active,
+.tab a.active {
+    border-bottom: solid 2px #FFF;
+    background-color: transparent;
+}
+
+.nav-header h1 {
+    text-shadow: 2px 2px 8px #000;
+}
