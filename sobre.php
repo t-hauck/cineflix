@@ -17,7 +17,7 @@
 
 <body>
     <?php require_once 'html/nav.php' ?>
-    <!-- <?php require_once 'contents/sobre-content.php' ?> -->
+    <?php require_once 'contents/sobre-content.php' ?>
 </body>
 
 </html>
