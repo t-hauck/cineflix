@@ -1,6 +1,5 @@
 // -- - --
-// Alteração da imagem de fundo do site de forma aleatória a cada acesso
-/* https://medium.com/swlh/arrays-in-javascript-e64b873ad801
+/* Alteração da imagem de fundo do site de forma aleatória a cada acesso
 var imgLocation = "assets/css/login-page-background/";
 var imagens = [
   [ "DSC_0185.JPG", imgLocation + "image0.css" ],
@@ -21,15 +20,6 @@ const filmBackground = document.getElementById("film_background");
 filmBackground.style.backgroundImage = "url('img/" + nomeImagem + "')";
 //
 // -- - --
-
-console.log(imagens);
-console.log("Nome da imagem carregada: ", nomeImagem);
-
-
-
-
-setTimeout(() => {
-  const youtu_video = "https://youtu.be/lpWf_QPDRKs?list=PLg_pr5IYXWPeBLhsTRWiuZhbKZlegKKZo"
-  
-  alert("CONTINUAR NO VÍDEO: \n\n" + youtu_video + "\n\n\n\n\n# change_image.js");
-}, "5000") // 5 segundos
+// console.log(imagens);
+// console.log("Nome da imagem carregada: ", nomeImagem);
+//
