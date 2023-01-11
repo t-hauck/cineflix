@@ -1,23 +1,43 @@
 <?php
-/*
- * GNU GENERAL PUBLIC LICENSE -  Version 3, 29 June 2007
- * < https://www.gnu.org/licenses/gpl-3.0.en.html >  * 
- * Autor: Jefferson Rocha <root@slackjeff.com.br> 
- * Data : 2019-08-10
- *
- *         <?php require_once 'html/footer.php' ?>
- */
-?>
-<!DOCTYPE html>
-<html lang="pt-BR">
+session_start();
 
-<head>
-    <?php require_once 'html/head.php' ?>
-</head>
 
-<body>
-    <?php require_once 'html/nav.php' ?>
-    <?php require_once 'contents/galeria-content.php' ?>
-</body>
+require_once './controller/FilmesController.php';
 
-</html>
+$route = $_SERVER["REQUEST_URI"]; // $Folder = "/cineflix";
+$method = $_SERVER["REQUEST_METHOD"];
+
+
+
+if ($route === "/") {
+    require_once 'galeria.php';
+    exit();
+}
+
+if ($route === "/novo") {
+    if ($method == "GET")
+        require_once 'cadastro.php';
+    if ($method == "POST") {
+        $controller = new FilmesController();
+        $controller->save($_REQUEST);
+    }
+    exit();
+}
+
+if ( substr($route, 0, strlen("/favoritar")) === "/favoritar" ) { // se os 11 primeiros caracteres são iguais a string
+    $controller = new FilmesController();
+    $controller->favorite(basename($route));
+    exit();
+}
+if ( substr($route, 0, strlen("/filmes")) === "/filmes" ) {
+    if ($method == "GET") { require_once 'galeria.php'; }
+    if ($method == "DELETE") {
+        $controller = new FilmesController();
+        $controller->delete(basename($route));
+    }
+    exit();
+}
+
+
+echo "404 Not Found";
+header("HTTP/1.1 404 Not Found");

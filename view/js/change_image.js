@@ -17,7 +17,7 @@ var imagens = [
 
 const nomeImagem = imagens[Math.floor(Math.random() * imagens.length)]; //[0];
 const filmBackground = document.getElementById("film_background");
-filmBackground.style.backgroundImage = "url('img/" + nomeImagem + "')";
+filmBackground.style.backgroundImage = "url('view/img/" + nomeImagem + "')";
 //
 // -- - --
 // console.log(imagens);
