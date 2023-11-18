@@ -1,5 +1,14 @@
-<?php ?>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <?php require_once 'html/head.php' ?>
+</head>
+<body>
 
+    <?php require_once 'html/nav.php' ?>
+    <?php require_once 'barra_de_pesquisa.php' ?>
+    
+    
 <div class="row">
     <form method="POST" enctype="multipart/form-data"> <!-- action="FilmesController.php" -->
 
@@ -38,7 +47,7 @@
                     <div class="file-field input-field">
                         <div class="btn purple lighten-2 black-text">
                             <span>Capa</span>
-                            <input type="file" name="poster_file" accept="image/*">
+                            <input type="file" name="poster_file" accept="image/*" required>
                         </div>
                         <div class="file-path-wrapper">
                             <input type="text" class="file-path validate">
@@ -55,3 +64,7 @@
         </div>
     </form>
 </div>
+
+<?php require_once 'html/footer.php' ?>
+
+

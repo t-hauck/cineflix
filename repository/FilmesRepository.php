@@ -8,7 +8,7 @@ class FilmesRepository {
         $this->conexao = Conectar::sql();
     }
 
-    
+    // VISUALIZAÇÃO DE DADOS NA TELA
     public function listarTodos():array {
         // $bd = Conectar::sql();
         $filmesLista = array();
@@ -26,9 +26,38 @@ class FilmesRepository {
         return $filmesLista;
     } // listarTodos
 
+    public function listarFavoritos():array {
+        $filmesLista = array();
+        $sql = "SELECT * FROM filmes WHERE favorito = 1";
 
+        $sqlResult = $this->conexao->query($sql);
+        if (!$sqlResult) return false;
+
+        while ($filme = $sqlResult->fetchObject()) {
+            array_push($filmesLista, $filme);
+        }
+
+        return $filmesLista;
+    } // listarFavoritos
+
+
+    public function pesquisar($busca):array {
+        $filmesLista = array();
+        $sql = "SELECT * FROM filmes WHERE titulo like '%$busca%'";
+
+        $sqlResult = $this->conexao->query($sql);
+        if (!$sqlResult) return false;
+
+        while ($filme = $sqlResult->fetchObject()) {
+            array_push($filmesLista, $filme);
+        }
+
+        return $filmesLista;
+    } // pesquisa
+
+
+    // ALTERAÇÃO DE DADOS NO BANCO
     public function salvar($filme):bool { // INSERÇÃO DE DADOS
-        // $sql = "INSERT INTO filmes (titulo, sinopse, nota, poster) VALUES ( '$filme_Titulo', '$filme_Sinopse', '$filme_Nota', '$filme_Poster' )";
         $sql = "INSERT INTO filmes (titulo, sinopse, nota, poster) VALUES (:titulo, :sinopse, :nota, :poster)";
 
         // $stmt = $bd->prepare($sql);
@@ -39,8 +68,7 @@ class FilmesRepository {
         $stmt->bindValue(':poster', $filme->poster, PDO::PARAM_STR);     // SQLITE3_TEXT);
 
         return $stmt->execute();
-    } // salvar
-
+    }
 
     public function favoritar(int $id) {
         $sql = "UPDATE filmes SET favorito=NOT favorito WHERE id=:id";
@@ -51,7 +79,6 @@ class FilmesRepository {
             return "ok";
         } else { return "erro"; }
     }
-
 
     public function apagar(int $id) {
         $sql = "DELETE FROM filmes WHERE id=:id";

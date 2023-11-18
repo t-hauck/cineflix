@@ -2,11 +2,12 @@ body {
     background-color: #e5e5e5;
 }
 
-.nav-extended {
+nav {
     /* background-image: url("/img/movie-3057394.jpg"); >CONTROLADO PELO JAVASCRIPT */
     background-size: cover;
     background-position: center;
     background-blend-mode: soft-light;
+    min-height: 20vh;
 }
 
 nav ul li.active,
@@ -17,6 +18,17 @@ nav ul li.active,
 
 .nav-header h1 {
     text-shadow: 2px 2px 8px #000;
+    margin:0 !important; padding-top:100px;
+}
+
+.padding_tb {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+.fadeIn {
+    opacity: 1;
+    transition: 1s;
 }
 
 .fadeOut {

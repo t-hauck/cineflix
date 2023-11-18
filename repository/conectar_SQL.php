@@ -5,9 +5,9 @@ class Conectar {
         $env = parse_ini_file('.env');
         $databaseType = $env["databaseType"];
         $database = $env["database"];
-        $server = $env["server"];
-        $user = $env["user"];
-        $pass = $env["pass"];
+        $server = isset($env["server"]);
+        $user = isset($env["user"]);
+        $pass = isset($env["pass"]);
 
         if ($databaseType === "mysql") {
             $database= "host=$server;dbname=$database";

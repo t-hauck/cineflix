@@ -4,19 +4,28 @@ session_start();
 
 require_once './controller/FilmesController.php';
 
-$route = $_SERVER["REQUEST_URI"]; // $Folder = "/cineflix";
+#$folder = "/cineflix";
+$route = $_SERVER["REQUEST_URI"];
 $method = $_SERVER["REQUEST_METHOD"];
 
 
-
 if ($route === "/") {
-    require_once 'galeria.php';
+    require_once 'view/index.php';
+    exit();
+}
+if ($route === "/favoritos") {
+    require_once 'view/favoritos.php';
+    exit();
+}
+if ($route === "/pesquisar" && $method == "POST") {
+    $controller = new FilmesController();
+    $controller->search($_REQUEST); 
     exit();
 }
 
 if ($route === "/novo") {
     if ($method == "GET")
-        require_once 'cadastro.php';
+        require_once 'view/cadastro.php';
     if ($method == "POST") {
         $controller = new FilmesController();
         $controller->save($_REQUEST);

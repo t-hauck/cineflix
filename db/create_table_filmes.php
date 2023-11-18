@@ -80,9 +80,9 @@ else
 // INSERÇÃO DE DADOS
 $sql = "INSERT INTO filmes (id, titulo, poster, sinopse, nota) VALUES (
     0,
-    'The Day of the Doctor',
+    'nome do filme',
     'https://ichef.bbci.co.uk/images/ic/736x414_b/p0dhb7dx.jpg',
-    'Doctor Who 50 Anos',
+    'sinopse/descrição do filme',
     '10'
 )";
 if ($bd->exec($sql)) {
